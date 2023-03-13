@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Promise는 콜백 지옥같은 코드가 형성되지 않도록 하기 위한 방안으로 ES6에서 도입됨.
+
+        현재 시점에서는 ES6를 지원하지 않는 브라우저가 없기 때문에 별도로 babel이 필요없음
+        */
+
+        function increase(number){
+
+            // 프로미스는 일종의 객체. 동작시켜야 하는 콜백함수를 Promise안에 넣음
+            // promise에서 resolce는 성공, reject는 실패를 의미한다. 
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        const result = number + 10;
+
+                        if(result > 50){
+                            const e = new Error('Number is too big!');
+
+                            return reject(e);   // 필수는 아님
+                        }
+
+                        resolve(result);
+                    },
+                    1000
+                );
+            }); 
+
+            return promise;
+        }
+
+        console.log(increase(0));
+        /* 출력결과 : Promise
+        [[Prototype]] : Promise
+        [[PromiseState]] : "fulfilled"
+        [[PromiseResult]] : 10          // 대괄호 2개( [[]] ) : 읽기 전용 데이터, 수정 불가
+        */
+
+        increase(0).then(number => {console.log(number)});
+        // increse(0) = promise
+        // then은 실행결과를 담고 있는 promise객체, then()에 추가로 then()을 쓸 수도 있다는 말.
+
+        increase(0)
+            .then(number => {
+                console.log(number);
+                return increase(number);    // return을 통해 then에서 사용했던 변수를 제공함
+            })
+            .then(number => {
+                console.log(number);
+                return increase(number);
+            })
+            .then(number => {
+                console.log(number);
+                return increase(number);
+            })
+            .then(number => {
+                console.log(number);
+                return increase(number);
+            })
+            .then(numnber => {
+                console.log(number);
+                return increase(number);
+            })
+            .then(number => {
+                console.log(number);
+                return increase(number);
+            })
+            .catch( e => {
+                console.log(e);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src='https://unpkg.com/react@18/umd/react.development.js'></script>
+    <script crossorigin src='https://unpkg.com/react-dom@18/umd/react-dom.development.js'></script>
+    <script src='https://unpkg.com/@babel/standalone/babel.min.js'></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            height: 100hv;
+            background: url('background.jpg') no-repeat center;
+            background-color: blue;
+            background-size: cover;
+            height: 100vh;
+            
+            
+        }
+
+        .header {
+            display: flex;
+
+        }
+
+        .header1 {
+            width: 50%;
+            height: 50px;
+            color: white;
+            text-shadow: -1px 0 #000, 0 1px #000, 0 1px #000, 0 -1px #000;
+            display: flex;
+
+        }
+
+
+        .header1 p{
+            margin-left: 100px;
+        }
+
+        .header2 {
+            width: 50%;
+            height: 50px;
+            
+            color:white;
+            text-shadow: -1px 0 #000, 1px 0 #000, 1px 0 #000, 0 -1px #000;
+            display: flex;
+            justify-content: end;
+        }
+
+
+        .header2 p{
+            margin-right: 100px;
+        }
+
+        .menubar {
+            width: 100%;
+            height: 180px;
+            color: white;
+            text-shadow: -1px 0 #000, 1px 0 #000, 1px 0 #000, 0 -1px #000;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menubar p{
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+
+        .content {
+            width: 100%;
+            height: 500px;
+        }
+
+        .content p {
+            text-align: center;
+            font-size: 3vw;
+            color: whitesmoke;
+        }
+
+        .footer {
+            text-align: center;
+            width: 100%;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        function Header() {
+
+            return(
+                <div className="header">
+                <div className="header1">
+                        <p>페이지명</p>
+                </div>
+
+                <div className="header2">
+
+                        <p>로그인</p>
+                        <p>회원가입</p>
+
+                </div>
+
+
+                </div>
+            );
+        }
+
+        function Menubar() {
+
+                return (
+                    <div className="menubar">
+                        <p>로드맵</p>    
+                        <p>여행지</p>    
+                        <p>포트폴리오</p>    
+                    </div>
+                )
+        }
+
+        function Content() {
+
+                return (
+                    <div className="content">
+                        <p>잠이오냐?</p>
+                        <p>공부안하냐?</p>
+                        <p>진짜 정신안차릴래?</p>
+                        <p>지수야 정신차려!!</p>
+                    </div>
+                )
+        }
+
+        function Footer() {
+            
+            return (
+                <div className="footer">
+                    <p>Jisu Company team-greedy</p>
+                </div>
+            );
+        }
+
+        function TodoApp() {
+
+            return (
+                <div className="container">
+                    <Header/>
+                    <Menubar/>
+                    <Content/>
+                    <Footer/>    
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoApp/>);
+
+    </script>    
+</body>
+</html>
