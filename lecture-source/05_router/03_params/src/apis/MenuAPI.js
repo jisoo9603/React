@@ -13,5 +13,5 @@ export function getMenuDetail(menuCode) {
 
 export function searchMenu(menuName) {
 
-    return menus.filter(menu => menu.menuName.match());
+    return menus.filter(menu => menu.menuName.match(menuName));
 }
